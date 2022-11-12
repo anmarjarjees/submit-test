@@ -1,0 +1,759 @@
+@charset "utf-8";
+/*
+To style our page, we should start from the general elements 
+and the major outer containers and moving to the inner ones
+and styling our page from top to bottom
+
+Notice that I have some rules are duplicated or repeated
+this is for learning and demonstration purpose
+
+NOTE: 
+IN Adobe Dreamweaver: SHIFT + F11 => open the CSS Designer Window 
+*/
+
+/* 
+To remove any margins or padding from all the elements or to override the default margins:
+ul, h1-h6, p, etc... 
+
+we are setting them to 0
+remember that reset will hide the bullets or the numbers from the list item
+*/
+* {
+  margin: 0;
+  padding: 0;
+  /* 
+    NOTE:
+    if you want to use this property "box-sizing" with the value of "border-box" frequently:
+    all the padding and the borders will be included within the width value for any element!
+  */
+  /* box-sizing: border-box;  */
+}
+/* style the body element */
+body {
+  /* 
+	font ==> any sans-serif ==> easy to read in computer screen 
+	we can use "serif" font types just for the major titles if we want
+	*/
+  /* the list of fonts below are from VS code editor:	*/
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* 
+	use the file "pattern.gif" as a background for the entire body element 
+	The rules/properties:
+	1. Select the background image:
+	background-image: url('../images/pattern.gif');
+	
+	2. make the background fixed (not moving when scrolling our page up and down):
+	background-attachment: fixed;
+	
+	3. Adding a background color, it's a good alternative option if the image is not loading for any reason (will ONLY work if the image is not loading):
+	background-color:rgb(167, 170, 161);
+	
+	4. The background image will be repeated in both x and y
+	we can avoid the repetition if needed:
+	(Please refer to my lectures in HTML module)
+	background-repeat: no-repeat;
+	*/
+  /*
+	background-image: url('../images/pattern.gif');    
+	background-attachment: fixed;
+	background-color:rgb(167, 170, 161);
+	*/
+  /*
+	Instead of typing the three properties separately,
+	we can write them all in one!
+	Using the shorthand property "background" instead of writing 3 properties:	
+	*/
+  background: url('../images/pattern.gif') fixed rgb(167, 170, 161);
+  /* 
+    by default the font style and font weight are normal and the font-size is 16px
+    but just in case if the user has modified their browser so we can enforce the default rules here 
+    */
+  /* Apply Normal Font to make sure that the font is NOT Bold (Just in case)*/
+  font-style: normal;
+  /*
+		By default,
+		the normal font-size for any text or paragraph is:
+		- 16px
+		- 1em
+		- 100%
+	
+		16px = 1em = 100%
+	*/
+  font-size: 16px; /* 100% => 1em = > 1rem which is the default */
+	
+	/* We can also reset the font weight to the default style which is normal */
+	  font-weight: normal;
+}
+
+/* the main div that contains the entire page */
+div.wrapper {
+  width: 1000px; /* In RWD as we are going to use later, we should use max-width */
+  /* padding-top: 23px; */
+  /* centre the all page content "div.wrapper" */
+  margin: 5px auto; /* 5px top/bottom and auto left/right */
+  background-color: rgb(223, 222, 221);
+	
+	/*
+	We can use the new CSS3 value for the property "background-image"
+	which is "liner-gradient":
+	background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
+	https://www.w3schools.com/css/css3_gradients.asp	
+	*/
+	
+    /* background-image: linear-gradient(angle, color-stop1, color-stop2);*/
+	/*	background-image: ();*/
+}
+
+/*
+style h1, h2, h3 by changing their size values
+we can also use em (for Capital M)
+Style the font size:
+h1 => 2em
+h2 => 1.5em
+h3 => 1.2em
+
+We only need these three levels of heading in our current website,
+we can ignore h4, h5, and h6
+
+NOTE: 
+Please remember that by default <p> element size is "1em"
+which is equal to 16px which is equal to 100%
+*/
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.2em;
+    /*
+    we put 1.2em and NOT 1em?
+    because p element is 1em by default and we should make h3 a little bit larger than p */
+}
+
+/* 
+all these 3 heading to have the same font family with serif font type: 
+*/
+h1,h2,h3 {
+	/* Using the font family from VScode list: */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* 
+style h1, h2, h3, and p elements
+by adding to them margins 
+(remember that we set their margins to 0 to reset the browser default setting):
+margin of 5px (top and bottom)
+margin of 0 (left and right)
+*/
+h1, h2, h3, p {
+    /* for learning purpose we will repeat the rules 4 times:  */
+    margin: 5px 5px 5px 5px; /* Top left bottom right (Clock-wise) */
+    margin: 5px; /* top, bottom, left, and right all these side have a margin of 5px */
+    margin: 5px 10px 7px 10px; /* top: 5px, right: 10px, bottom: 7px, left: 10px */
+	/*
+		Using 3 values only!
+		margin: value1 value2 value3
+		value1 => the margin from the top
+		value2 => the margins from left and right (together)
+		value3 => the margins from the bottom
+	*/
+	margin: 1px 150px 1px; /* 1px => top, 150px => left/right, 1px => bottom */
+	/* The last rule/property below	will override all the previous ones: */
+    margin: 5px 0; 	/* top/bottom: 5px and left/right: 0 */
+  }
+
+/* 
+We want to style any li element (inside ul) for our website to have some margins and paddings:
+Fixing the list items, remember we moved/changed their bullets/numbering system positions
+after reset their padding to 0
+*/
+ul li {
+	/* 
+		padding-left => will affect the space between the bullet symbol and the text:
+		margin-left => will affect the space before the list item and its symbol
+	*/
+	padding-left: 7px;
+    margin-left: 30px;
+}
+
+/* We can start with main boxes of our website */
+
+/* 
+The nav element:
+I want to use two different styles:
+- Basic (No CSS3)
+- Advanced (Using CSS3 property "flex"
+
+To demonstrate these two different styles clearly without having too much comment in one file, 
+I will put them in two separate css files:
+- nav1.css
+- nav2.css
+
+In real-life project, we should place all our CSS rules in a one single file,
+so we will have one HTTP request to be sent to the server to grab the css file that contains all the rules
+ */
+
+/*
+Task: Style the <header> element:
+- background image => biking.jpg
+- bottom border with any style you like (width style color)
+- make sure that the image is repeated horizontally only (Not vertically)
+- make sure that the image is visible (header should not collapse)
+
+Note/Hint:
+remember that <header> element is empty (doesn't have any content),
+so any background color or any background image we add in the css will not be visible
+unless if we set a height for this header element (which is what we are going to do)
+or we can place some elements inside (if needed)
+*/
+header {
+	/*	background: red;*/
+	background-image: url("../images/biking.jpg");
+	height: 145px; /* 145px is the same height of the image that we placed as the header background */
+	
+	/*
+    When we add a background image with CSS,
+    we need to specify the height
+
+    Since the image height is 145px, we can set the same height for the header
+    because the header is empty we need to specify its height,
+
+    We can put the height based on the image dimensions which is the same value as the image height
+    */
+	
+	/*
+       By default, the BG image will be repeated in both directions: x and y
+	   In our case we only need the image to repeated horizontally
+    */
+    background-repeat: repeat-x;
+	/*	Yes, we can combine them (background-image and background-repeat) using the short hand: background: */
+	border-bottom: 2px inset rgb(133, 106, 106);
+}
+
+/*
+We need to layout our page to put the aside element and the main element side by side
+remember that they are both block-level elements:
+- reduce their width
+- using the float property
+
+the width of div.wrapper (that contains both aside and main) is width: 1000px;
+the total width of both element should not go beyond 1000px;
+we can divide the 1000px for both
+notice that we don't have to divide the 1000px evenly between aside and main
+as the main should wider the the aside bar
+
+Calculate the total width:
+aside 200px + main 800px = 1000px 
+
+In the next examples of using RWD (Responsive Web Design) we will use %
+============================================================================
+In this situation using the CSS3 value of the property "display: inline-block;"
+will not be a good choice 
+although it is considered to be another way to make block elements sit beside each other
+like inline element!
+Yes, we will see the <aside> element beside the <main> element
+but they will be aligned to the bottom (not to the top)
+So this option of display: inline-block will be very useful if all the elements have the height
+
+but in this case using float property is better
+because both elements will be aligned to the top
+(You can try it by yourself and see the result)
+display: inline-block;
+========================================================
+Very Important Note:
+Don't forget the issue with using the float property (refer to my HTML lectures)
+we will fix this issue
+========================================================
+Inside Padding:
+The contents of the <aside> and <main> elements are attached to the left borders!
+For better styling and looking, we should have some little space
+this space should between the content and the border of the container
+So we need to use "padding" => because the space will be inside the element itself
+if we use "margin" => the space around the element
+
+NOTE:
+Adding padding will add extra pixel to the actual width of the element:
+<aside> element => 200px + 5px left + 5px right = 210px 
+<main> element => 800px + 5px left + 5px right = 810px 
+the total width of both elements: 1020px but our div.wrapper is 1000px!
+To fix this issue:
+Solution#1: to recalculate the width for both by deducting 10px from each! too much math :-)
+Solution#2: using CSS3 property "box-sizing" with the value of "border-box"
+Please refer to my HTML and CSS notes
+*/
+
+/*
+style the aside HTML element that has a class named "sidebar"
+<aside class="sidebar">
+*/
+aside.sidebar {
+	/*	Using shiny colors for initial test */
+	background: yellow; /* or Using background-color: yellow; */
+	background-color: #807B7B;
+	color: rgb(247, 238, 238);
+	width: 200px;
+  /*	display: inline-block;*/
+	float: left;
+	/* 5px => for top, right, bottom, and left	*/
+	padding: 5px; /* 200px + 5px left + 5px right = 210px */
+	
+	/*
+	Important Note:
+    To include the padding and the border within the element's total width and height:
+    using CSS3 property to add padding without changing the width ==> box-sizing: border-box;
+  */
+   box-sizing: border-box; /* all the padding will be included in the width */
+}
+
+/*
+style the main HTML element that has a class named "main-content"
+<main class="main-content">
+*/
+main.main-content {
+    /* using shiny colors for just for initial test	*/
+/*	background: blue;	*/
+	
+	/*	
+	We have the background-color as an alternative solution to be applied
+	if the user using a very old browser or IE less 9 (use canIuse.com)
+	
+	Also we can use the fallback properties based on the browsers venders (engines):
+	-webkit-
+	-moz-
+	-o-
+	*/
+    background-color: rgba(224,217,217,1.00);
+    width: 800px;
+    /*	display: inline-block;*/
+    float: left;
+    padding: 5px; /* 800px + 5px left + 5px right = 810px */
+    /*
+    CSS3 Trick property to make the padding part of the width size of the current element
+    */
+    box-sizing: border-box;    /* this will make 800px includes the padding *//*	display: inline-block;*/
+	background-image: linear-gradient(180deg,rgba(255,255,255,1.00) 0%,rgba(159,165,168,1.00) 100%);
+	/*	If we really care about old browsers we can add the following: */
+    background-image: -webkit-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(159,165,168,1.00) 100%);
+    background-image: -moz-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(159,165,168,1.00) 100%);
+    background-image: -o-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(159,165,168,1.00) 100%);
+	
+	/* 
+	For Reference:	List of CSS vendor prefixes
+	-moz- (Firefox)
+	-o- (Opera)
+	-ms- (Internet Explorer)
+	-webkit- (Safari, Chrome)
+	
+	We can just attach them to the beginning of the property or the value of the CSS3 rules
+	*/
+    
+}
+
+/*
+Style the iframe element to make it center:
+we can add audio and video elements also
+*/
+iframe, video, audio {
+  /* add 5 px for top and button, and it should margin auto for left and right */
+  /*
+  iframe is an inline element
+  In order to center any inline element with margin auto,
+  we do have to make block-level element
+  */
+  display: block;
+  margin: 5px auto;
+  border: 2px groove #F1E9B5;
+  padding: 3px;
+}
+
+/* ****************** Starting the form styles *********************** */
+form {
+    /* We will use  */
+    background-color: rgb(243, 229, 202);
+    /*
+    Note: Don't forget that <form> is a block-level element so we don't need display: block
+    in order to give it a width value or to centre it
+
+    the form will only take 90% of its container which "the main element: main.content"
+    */
+    width: 90%;
+    padding: 5px;
+    margin: auto;
+    border: 1px groove rgb(59, 80, 80);
+}
+
+/*
+Task: 
+Target the only the "first" label and the "first" input elements inside our form
+to have them displayed as block-level elements
+
+Recap: to target the first level child (first generation), we use the > symbol
+*/
+form>label, form>input {
+	display: block;
+}
+
+/*
+Task:
+Styling any label element inside form element (Yes, in our website, we don't have a label outside a from)
+*/
+form label {
+    background-color: #5A5A56;
+    color: #E4E4E2;
+    width: 99%;
+    /*
+    The total: width 99% + border 4px + padding 10px
+
+    but with using CSS3: box-sizing: border-box;
+    all the extra padding and border size will be included with 99% width of the label
+    */
+
+    border: 2px solid #424141;
+    margin: 20px 0 5px 0; /* top right bottom left */
+    /* 
+	using CSS3 to add rounded corners 
+	Notice below, we are targeting the users with new browsers: border-radius:
+	For very old browser:
+	-webkit-border-radius
+	-moz-border-radius
+	*/
+    border-radius: 6px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+/*
+Task: 
+Style all input fields (elements) + textarea element inside the form element
+This will include based on our HTML code:
+- input of type="text"
+- input of type="email"
+- input of type="date"
+- input of type="number"
+- input of type="submit" 
+- input of type="reset"
+- textarea
+*/
+form input, form textarea {
+    /* extend their width to fill the form area like their labels */
+    /* we can use border radius  */
+    border-radius: 5px;
+    padding: 5px; /* the space within the input and text area is 5px */
+	/* Again using  box-sizing: border-box; to include the padding and the border within the width of the element */
+    box-sizing: border-box; 
+	/* The rule below can be commented after adding the solutions below */
+    width: 99%;
+}
+
+/*
+ The problem:
+   When we set the width to 99% for this selector => form input
+   this will target all the input elements including the input elements of type:
+   - submit
+   - reset
+
+   But we need to style ONLY the input elements of these types:
+  - input of type="text"
+  - input of type="email"
+  - input of type="date"
+  - input of type="number"
+
+  Excluding these input elements of these types:
+  - input of type="submit" 
+  - input of type="reset"
+
+   In other word, we need to style all
+   the input element EXCEPT the input
+   of type "submit" and the input of type "reset".
+   So we need to exclude the input of type "submit" and "reset"
+*/
+
+/*
+Solution 1: Long Way
+Using the same rules that we had covered (please refer to my HTML and CSS in-class notes
+Giving different width by targeting only these input elements:
+- input of type="text"
+- input of type="email"
+- input of type="date"
+- input of type="number"
+= plus
+*/
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="password"],
+textarea  {
+	width: 99%;
+}
+
+/*
+Solution 2: Short Way
+we can use the ":not" pseudo class 
+A CSS function not()
+
+Example:
+like one single word without spaces or commas
+input:not([type="radio"]):not([type="checkbox"])
+
+Below we are saying:
+style all the input elements but:
+- not input of type "submit" AND  not input of type "reset"
+and style text area
+*/
+input:not([type="submit"]):not([type="reset"]), textarea {
+  width: 99%;
+}
+
+/*
+Solution 3:
+*/
+div.buttons input {
+  width: 100px;
+  /* Adding more styles: */
+  margin: 5px;
+  background-color: #573304;
+  color: #F3E7B6;
+  font-weight: bold;
+}
+
+/* 
+Solution 4: Yes, we can also use the ids or classes for styling the wanted form elements..... 
+*/
+
+/* 
+div.buttons: the container element of these children:
+- input of type submit 
+- input of type reset 
+
+their container is a div with class named buttons 
+*/
+div.buttons {
+  background-color: rgb(170, 170, 76);
+    /*
+    Only use the two CSS3 properties to layout the input fields inside div.buttons:
+    1- display: flex; (CSS3) [inline-block (CSS3) and inline (CSS2) and block (CSS2)]
+    2- justify-content:
+    > flex-start, flex-end
+    > center, space-around
+    > space-evenly
+    > space-between
+
+    so we need to apply the these two new CSS3 rules to the container element
+    (not the element(s) that we need to centre but its direct container)
+
+    read more: https://www.w3schools.com/cssref/css3_pr_justify-content.asp
+    */
+
+    /* Step 1: use CSS3 property new value for display called "flex" */
+    display:flex;
+    /* Step 2: use CSS# property "justify-content" */
+    justify-content: center;
+    justify-content: space-around;
+    justify-content: space-between;
+    justify-content: space-evenly;
+    /* Below for old versions of Chrome, Safari, and FireFox */
+    -webkit-justify-content: space-evenly;
+    -moz-justify-content: space-evenly;
+}
+
+/*
+Adding a nice behaviour to the form buttons "Submit" and "Reset" :-)
+Change their colors and the mouse pointer on hovering over them
+we used a:hover, but we can use the pseudo class :hover with any element also: 
+*/
+div.buttons input:hover {
+  background-color: #F3E7B6;
+  color: #573304;
+  cursor: pointer;
+}
+
+
+/* ************** Styling only the projects page ********************** */
+/* 
+In projects html page, we put three different sections as samples:
+- Graphic Design
+- Web Design
+- Animation Design
+
+Each category is inside a div.samples
+The samples are saved inside HTML5 figure element
+For example, each sample of "Graphic Design" as wrapped by a figure element
+style the div with class="samples" which is the container of all figure elements 
+
+Below is the layout:
+
+<div class="samples">
+    <h3>Main Title<h3>
+    <figure>
+        <img ...>
+        <figcaption>Sample Caption</figcaption>
+    </figure>
+
+     <figure>
+        <img ...>
+        <figcaption>Sample Caption</figcaption>
+    </figure>
+
+     <figure>
+        <img ...>
+        <figcaption>Sample Caption</figcaption>
+    </figure>
+    ......
+</div>
+*/
+div.samples {
+  /*	for testing: */
+  background-color: lightgreen;
+  border: 1px inset rgb(124, 112, 4); /* adding border to all sides */
+  border-top: none;
+  border-radius: 10px;
+  margin: 10px auto;
+  /* 
+    Solution#1 for the floating issue:
+    we need to use a property named "overflow" to solve the issue with floating children
+    because all the figure elements will lose their existence based on their container element
+    after making them floating to the left.
+
+    since there is no height property for this div (we don't want to give height and figure out the right value, 
+    we can use the value "auto" or "hidden" for "overflow" property
+
+    NOTE: Remember that "overflow" and "float" will NOT work with "display"
+  */
+
+    overflow: auto; /* auto or hidden */
+    /* this will affect all the div.samples */
+
+    /* 
+      Calculate the "width" of div.samples based on the values of its children 
+      In each row/line:
+      - We have 3 figures
+      - 10px of margins (since we have 3 figures => 30px margin)
+      - 10px of padding (since we have 3 figures => 30px padding)
+      - Each image size (width) is 200px => total of 3 images is 600px
+
+      So the total of the images width plus margins and paddings and borders:
+      600px for 3 images width + 30px for margin + 30px for padding  + 12px for border
+      => the final total is 672px
+    */
+    width: 672px;
+}
+
+div.samples h3 {
+  text-align: center;
+  background: rgb(23, 49, 1);
+  color:rgb(245, 226, 226);
+  margin-top:0;
+  /* We don't want radius for all the corners, only for top/left and top/right: */
+  /* border-radius: 10px; */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/*
+Style each figure element inside the div.samples
+figure/figcaption are block-level
+*/
+div.samples figure {
+  background-color: #e9e9d0;
+  border: 2px solid #36270F;
+  margin: 5px; /* 5px for all sides */
+  padding: 5px; /* 5px for all sides */
+
+  /*
+  we can put the following three rules for styling the text inside figcaption here
+  because figure is the parent of figcaption and all these properties can be inherited:
+  
+    text-align: center;
+    font-weight: bold;
+    color: red;
+  
+    But we will put them inside figcaption selector
+    because figcaption contains the text (makes more sense for us as developers)
+  */
+
+  /*
+    Layout them (figure elements) horizontally:
+    - display: inline-block;
+    OR:
+    - float: left;
+  */
+
+  /* We can use CSS3 value "inline-block" */
+  /* display: inline-block;  */
+
+  /* Using the floating options */
+  float: left; /* to disable the block-level */
+  /*
+    Be careful with using the float property!
+    The issue: when the elements are floating, they will lose their physical existence as block element!
+    so their container element (parent element) will collapsed till it reaches some other contents
+    
+    Yes, in this case using display: inline-block will be a better choice :-)
+    But we will continue using the float property and working on fixing this issue for learning demonstration
+    
+    Two initial/main/common solutions for this issue:
+
+    Solution#1:
+    we need to add the property "overflow" to its parent element (the direct container)
+    which is the div.samples:
+    div.samples is the parent element/container of figure elements
+
+    Notice this solution for using float: left
+    if we use "display: inline-block;" instead of "float:left;"
+    this will work fine without adding overflow to its parent
+  */
+}
+
+div.samples figcaption {
+  /* To centre the figcaption text */
+  text-align: center;
+  /* To make it bold */
+  font-weight: bold;
+  /* To make 90% of the original font size which is 100% */
+  font-size: 90%;
+  color:rgb(23, 49, 1);
+}
+
+
+div.samples figure:hover {
+  background-color:rgb(221, 192, 155);
+}
+
+
+/* style the footer element */
+/*
+NOTE:
+since section and aside elements are no longer block elements
+so they will not take their normal space as block elements (losing their physical existence, 
+for this reason the footer element will be moved to the top to be beside the aside or beside the
+section depending on their contents
+
+And that's why the background green color will move up,
+To review this issue, refer to our lectures in using HTML and CSS 
+*/
+footer {
+	background: green; /* was an old value for testing only */
+  /*	clear any element from the both sides of the footer */
+  clear: both; /* to fix the issue with floating property for the elements above */
+  background-color: #705B5B;
+  color: #E3D5D5;
+  padding: 3px 0;
+  text-align: center;
+}
+
+/* 
+Solution#2: 
+Adding an empty block-level element to our html inside each div.samples at the end
+We used this technique/solution with the spoiled footer :-)
+when the footer was jumping to the top after floating the content above it
+we just add: clear: both; 
+*/
+.clear-div {
+  clear: both;
+}

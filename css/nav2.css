@@ -1,0 +1,189 @@
+/* 
+This file is just for styling the main navigation - The advanced version
+using new CSS3 properties => [display: flex] and [justify-content: x ] 
+
+To layout all <a> elements which are the children of this <ul> nicely and evenly
+we need to add these two properties with the following values to their parent element which is this <ul>:
+display: 
+flex rule => helps us to evenly distribute the children items across their parent container 
+
+In our case, we need to distribute the list items <li> which are children of the parent <ul>
+
+- We have the container: <ul>
+- We have the children: <li>
+
+the rule display: flex works with another required CSS3 property named "justify-content"
+
+To summarize, to layout any children elements, we can use these two CSS3 properties to their parent elements:
+
+1- the property "display" with the value of "flex"
+2- the property "justify-content" with either one from the following values:
+    > flex-start (default): items are packed toward the start line
+    > flex-end: items are packed toward to end line
+    > center: items are centered along the line
+    > space-around: items are evenly distributed in the line with equal space around them.
+    Note that visually the spaces aren't equal, since all the items have equal space on both sides. 
+    > space-evenly: items are evenly distributed across their container
+    > space-between: items are evenly distributed in the line; first item is on the start line, last item on the end line
+
+- display: flex (CSS3 value) <==> this is the one that we need to use 
+
+To review the rest (we had already tried all the values below):
+- display: inline-block (CSS3 value) 
+- display: inline (CSS2 value) 
+- display: block (CSS2 value)
+
+read more: https://www.w3schools.com/cssref/css3_pr_justify-content.asp
+*/
+
+
+/* Styling the main navigation */
+
+
+nav {
+    background-color: #4E4545;
+    color: #E8E3E3; 
+    
+    position: fixed;
+    width: 1000px; /* based on the size of the div.wrapper or use the value 100% for RWD */
+}
+
+/* 
+Style only the ul inside the nav NOT inside the aside 
+or Style the unordered list element <ul> which is inside <nav> 
+*/
+nav ul {
+    list-style-type: none;  /* remove the bullets */
+    padding: 5px; 
+
+    /* This ul is the parent of the li for each page */
+    /*
+    Step 1: CSS3: display flex option:
+        this defines a flex container (ul is the direct container of li)
+        all its children element will be flexible! li ==> inline
+        (It enables a flex context for all its direct children whether they are inline or block.)
+    */
+    display: flex;
+    /* 
+        Step 2: use CSS3 property  has the following values as explained above: 
+        - flex-start (default)
+        - flex-end
+        - center
+        - space-around
+        - space-evenly
+        - space-between
+    */
+    justify-content:space-evenly;
+    /*
+    the contents of ul are list of li elements
+    */
+}
+
+/*
+Reset any margin and padding that we added in the main styles file to be 0 again
+for only the li of ul inside the nav
+*/
+nav ul li {
+    /* 
+        We want the lits items to be displayed horizontally 
+        we will use display: inline; 
+        Yes, other developer might use float: left (but we should fix the issues for the floating as we did before)
+    */
+    display: inline; 
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 
+We will style our original links in the main nav: 
+styling the <a> elements with their 4 link status: 
+- link (normal link)
+- visited (this link already clicked)
+- hover (moving the mouse over the link)
+- active (the moment we click and the link)
+*/
+nav a:link {
+    /* We don't want to have our links in the main nav with underlines */
+    text-decoration: none;
+    /* add some shading to their background */
+    background-color: #D8D9D5;
+    /* add different color to the link text */
+    color: #4E4545;
+    /* Capitalize all the links */
+    text-transform: uppercase;
+    font-weight: bold;
+    /*
+    Very Important Note To Recap: :
+    <a> element are inline element
+    inline element has no width, no height, and no margins
+
+    since <a> element are inline element (has no width)
+    so we need to make it block level element and keep them in horizontal layout
+    so we need to use the CSS3 value "inline-block"
+
+    We need to make each <a> element is block by itself to have a little space
+    and having the box shape to set width or padding
+    */
+
+    /* We can use "inline-block" but no need it works with "block" */
+    display: inline-block;
+
+    /* 
+    Very Important Note To Recap: 
+    Using "width" property will be useless for any inline element 
+    <a> is an inline element but we had already changed it above
+
+    in order to have the width working
+    we have to set this element to be either "block" or "inline-block"
+    - CSS2: block
+    - CSS3: inline-block
+    */
+    width: 150px;
+    text-align: center;
+    /*
+    Each <a> box has four corners,
+    we can use one value for all, or we can use 4 values for each one
+    */
+    border-radius: 15px;
+
+    /* 5px top/bottom and 7px left and right */
+    padding: 5px 7px;
+}
+
+/*
+Counting the total of specificity:
+- nav => 1
+- a => 1
+- :visited => 10
+Total = 12 points
+*/
+nav a:visited{
+    color:#7e7e39;
+}
+
+nav a:hover {
+    color: rgb(255, 255, 0);
+}
+
+nav a:active {
+    color: #f503039d;
+}
+
+/*
+Styling the <a> element with class="current" inside the nav
+to refer to the current opened page.
+
+So to change the a element (link) for the current open page
+Style (Target) any anchor tag inside <nav> element that has class="current"
+
+Counting the total of specificity:
+- nav => 1
+- a => 1
+- .current => 10
+Total = 12 points
+*/
+nav a.current {
+    background-color: #8a7d0e;
+    color: #fdfdfc;
+}

@@ -1,0 +1,127 @@
+/* 
+This file is just for styling the main navigation - The basic 
+Similar to the second task of HTML assignment but with extra settings
+*/
+
+
+nav {
+    /* for testing: */
+    background: antiquewhite;
+    background-color: #4E4545;
+    /* 
+    The color will affect all the text inside the nav
+    But it will not affect the links <a> because they are blue by default
+     */
+    color: #E8E3E3; 
+    
+    /* 
+    to make the nav element fixed not moving with other element
+    when we scroll the page 
+
+    NOTE: 
+    position: fixed; without specify any pair of corners 
+    The default will be top/bottom => the same normal location (y-axis)
+    the default right/left => the same normal location (x-axis)
+    which means will stick in its normal position
+    */
+    position: fixed;
+    /*
+        Review:
+        position property has 4 major options:
+        - static ==> the default (the normal flow)
+        - relative ==> based on its current position
+        - absolute ==> based on its parent relative element
+        - fixed ==> fixed on its position (doesn't move) based on the browser window
+        */
+        
+    /*
+    Very Important Note:
+	After adding/using position: fixed,
+	we DO need to specify the width of the element 
+    otherwise the element width will be just based on its content	
+	*/
+    width: 1000px;/* based on the size of the div.wrapper or use the value 100% for RWD */
+
+    /* We can specify the top/left/right/bottom but no need */
+    top:0; /* Using top 0 to stick our nav at the top of the browser window */
+    /* left: 5px; We DON'T to push it 5px from the view port */
+}
+
+/* 
+Style only the ul inside the nav NOT inside the aside 
+or Style the unordered list element <ul> which is inside <nav> 
+*/
+nav ul {
+    /* 
+    Notice that by default the browser adds 40px padding to the ul element 
+    And we don't need this padding for our nav list items because we displaying them horizontally!
+    
+    We can override/remove this unnecessary extra padding by adding this rule: 
+    padding-left: 0; 
+    
+    But NO NEED we did that by setting the margins and padding for all the elements to be 0 using the universal selector *  :-)
+    */
+    list-style-type: none;  /* remove the bullets */
+    padding: 5px;
+}
+
+/* 
+We want our list items for the nav to be displayed horizontally
+li is a block level element, but we can make it inline element 
+*/
+nav ul li {
+    display: inline;
+    /* I like to make them capital */
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+
+
+/* 
+    Review: Two major types of the keyword "Pseudo":
+
+    - Pseudo Elements: acts like an extra element in the code:
+    for example, we used these two Pseudo Elements rules
+    ::first-letter 
+    ::first-line
+    NOTE: In the old code (old books), developers used to use one single colon : for pseudo element, but we should use double :: now
+  
+    - Pseudo Class: acts like an extra value for a class attribute
+    we use this class with a element:
+
+    The syntax: => a:Pseudo-Class
+
+    :link ==> the normal link inside <a> element
+    :visited ==> the visited or the clicked links
+    :hover ==> when we hover the mouse over the link
+    :active ==> when we click the link
+
+    They should appear in the following sequence
+    Link Visited Hover Active
+    LoVe HAte
+*/
+
+/* We will style our original links in the main nav: */
+nav a:link {
+    /* We don't want to have our links in the main nav with underlines */
+    text-decoration: none;
+    color:#E8E3E3;
+}
+
+nav a:visited{
+    color:#f2f3ca;
+}
+
+nav a:hover {
+    color: rgb(255, 255, 0);
+    border-bottom: 4px solid rgb(246, 247, 233);
+}
+
+nav a:active {
+    color: #d8f06c; 
+}
+
+/* adding our class current => for the current open page */
+.current {
+    border-bottom: 4px solid rgb(246, 247, 233);
+}
